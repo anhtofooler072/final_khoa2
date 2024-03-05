@@ -24,7 +24,8 @@ export default function Homepage() {
   const handleInput = (e) => {
     setTypeInput(e.target.value);
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     //validation
     if (typeInput === "") {
       alert("Please enter a task");
@@ -109,7 +110,9 @@ export default function Homepage() {
     <div>
       <div className="taskBox">
         <h1>#Todo</h1>
-        <div className="taskBox_input">
+        <form
+          className="taskBox_input"
+          onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Add a task"
@@ -121,7 +124,7 @@ export default function Homepage() {
             onClick={handleSubmit}>
             Add
           </button>
-        </div>
+        </form>
 
         <div className="container">
           <ul
